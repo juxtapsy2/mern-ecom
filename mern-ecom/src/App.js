@@ -1,20 +1,27 @@
-import './App.css';
-import { Button } from 'antd';
-import 'antd/dist/reset.css';
-import React from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-import {incremented, decremented} from './redux/slides/counterSlice';
+import React, { Fragment } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { incremented, decremented } from './redux/slides/counterSlice';
+import styled from 'styled-components';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { routes } from './routes/routes';
+import { DefaultLayout } from './components/DefaultLayout/DefaultLayout';
 
 function App() {
-  const countNumber = useSelector((state) => state.counter.value);
-  const dispatcher = useDispatch();
-
+  
   return (
-    <div>
-      <Button type="primary" onClick={()=>dispatcher(incremented())}>Increment</Button>
-      <span>{countNumber}</span>
-      <Button type="dashed" onClick={() => dispatcher(decremented())}>Decrement</Button>
-    </div>
+    <Router>
+      <Routes>
+        {routes.map((route) => {
+          const Page = route.page;
+          const Layout = route.showNav? DefaultLayout: Fragment;
+          return <Route key={route.path} path={route.path} element={
+            <Layout>
+              <Page />
+            </Layout>
+          } />;
+        })}
+      </Routes>
+    </Router>
   );
 }
 
