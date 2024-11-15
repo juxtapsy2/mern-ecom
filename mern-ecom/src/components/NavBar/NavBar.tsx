@@ -1,19 +1,35 @@
 import React from 'react';
-import {Row, Col, Input} from 'antd';
-import {NavWrapper, NavText} from './NavWrapper';
-import type { GetProps } from 'antd';
-
-const {Search} = Input;
-type SearchProps = GetProps<typeof Input.Search>;
+import { Col } from 'antd';
+import { CaretDownOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
+import {NavWrapper, NavText, AccountWrapper, AccountSubwrapper, AccountText} from './NavWrappers';
+import {Searchbox} from '../Searchbox/Searchbox';
 
 export const NavBar = () => {  
   return (
     <div>
         <NavWrapper>
-            <Col span={6}><NavText>Bill  1</NavText></Col>
-            <Search placeholder="input search text" enterButton />
-            <Col span={12}><NavText>Bill  2</NavText></Col>
-            <Col span={6}><NavText>Bill  3</NavText></Col>
+            <Col span={4}><NavText>BilleCOM</NavText></Col>
+            <Col span={12}>
+              <Searchbox size='medium' placeholder="Type something" buttonText="Search"  />
+            </Col>
+            <Col span={8} id="login_section">
+              <AccountWrapper>
+                <UserOutlined style={{fontSize: 30, color: '#fff'}} />
+                  <div>
+                    <AccountSubwrapper>
+                      <AccountText>Login/Sign-up</AccountText>
+                    </AccountSubwrapper>
+                    <AccountSubwrapper>
+                      <AccountText>Account</AccountText>
+                      <CaretDownOutlined />
+                    </AccountSubwrapper>
+                  </div>
+              </AccountWrapper>
+              <AccountWrapper>
+                <ShoppingCartOutlined style={{fontSize: 30, color: '#fff'}} />
+                <span>Cart</span>
+              </AccountWrapper>     
+            </Col>
         </NavWrapper>
     </div>
   )
