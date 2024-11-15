@@ -8,14 +8,16 @@ export const VerticalNavBar = () => {
     const renderContent = (type, options) => {
         switch(type) {
             case 'text':
-                return options.map((option) => <TextValueWrapper>{option}</TextValueWrapper>);
+                return options.map((option) => <div><TextValueWrapper>{option}</TextValueWrapper></div>);
             case 'checkbox':    
                 return (
-                    <Checkbox.Group style={{width: '100%'}}>
-                        {options.map((option) =>
-                            <Checkbox value={option} />
-                        )}
-                    </Checkbox.Group>    
+                    <div>
+                        <Checkbox.Group style={{width: '100%', display: 'flex', flexDirection: 'column'}}>
+                            {options.map((option) =>
+                                <Checkbox value={option} />
+                            )}
+                        </Checkbox.Group>   
+                    </div> 
                 )
             default:
                 return;

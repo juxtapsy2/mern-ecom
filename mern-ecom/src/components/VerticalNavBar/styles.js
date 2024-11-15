@@ -17,5 +17,8 @@ export const ContentWrapper = styled.div`
     flex-direction: column;
     gap: 12px;
     min-width: fit-content;
+    max-width: 576px;
+    left: 0;
+    position: absolute;
     align-items: center;
 `
