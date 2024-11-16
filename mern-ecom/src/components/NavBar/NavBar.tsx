@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col } from 'antd';
+import { Badge, Col } from 'antd';
 import { CaretDownOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
 import {NavWrapper, NavText, AccountWrapper, AccountSubwrapper, AccountText} from './NavWrappers';
 import {Searchbox} from '../Searchbox/Searchbox';
@@ -25,10 +25,9 @@ export const NavBar = () => {
                     </AccountSubwrapper>
                   </div>
               </AccountWrapper>
-              <AccountWrapper>
+              <Badge count={4} size="small">
                 <ShoppingCartOutlined style={{fontSize: 30, color: '#fff'}} />
-                <span>Cart</span>
-              </AccountWrapper>     
+              </Badge>     
             </Col>
         </NavWrapper>
     </div>
