@@ -19,5 +19,4 @@ export const ButtonWrapper = styled(Button)`
     }
     width: 100%;
     text-align: center;
-    justify-content: center;
 `;
